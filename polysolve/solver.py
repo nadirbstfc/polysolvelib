@@ -5,7 +5,42 @@ from cowsay import cow
 
 CBRT_UNITY_IM = sqrt(3)/2 * 1j
 
-def quadratic(a, b, c):
+def quadratic(
+        a: float,
+        b: float, 
+        c: float
+        ) -> tuple[complex , complex]:
+    """
+    Solves the roots of a quadratic equation.
+
+    Uses the quadratic formula. Result must be real.
+
+    Parameters
+    ----------
+    a
+       :math:`x^2` coefficient.
+    b
+       :math:`x` coefficient.
+    c
+       Constant value.
+
+    Returns
+    -------
+    tuple[complex, complex]
+
+
+    Examples
+    --------
+    >>> quadratic(1, 2, 3)
+    ((-1+1.4142135623730951j), (-1-1.4142135623730951j))
+    >>> quadratic(3., 0., -1.)
+    ((0.5773502691896257+0j), (-0.5773502691896257+0j))
+
+    See Also
+    --------
+    numpy.polyval : Evaluate polynomial at point.
+
+    """
     det = b**2 - (4*a*c)
 
     if math.isclose(det, 0):
@@ -28,3 +63,7 @@ def quartic(a, b, c, d):
         cow("Degenerate MOOoo-ts")
 
     return (x1, x2, x3)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
